@@ -1,0 +1,16 @@
+# Secretos y credenciales: JAMAS versionar
+.env
+*.env
+*credentials*
+*.key
+*token*
+
+# Datos locales de n8n
+.n8n/
+n8ndata/
+pgdata/
+
+# Python / sistema
+__pycache__/
+*.py[cod]
+.DS_Store
