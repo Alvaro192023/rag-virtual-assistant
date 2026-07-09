@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate n8n workflow JSON
+        run: |
+          python -c "import json, glob; files = glob.glob('*.json'); [json.load(open(f, encoding='utf-8')) for f in files]; print(f'{len(files)} workflow JSON file(s) valid.')"
